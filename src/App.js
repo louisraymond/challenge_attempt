@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Papa from "papaparse"
 import DataContainer from "./DataContainer"
 import {BrowserRouter, Route} from "react-router-dom"
-import {Redirect} from 'react-router'
 
 import data from './data.csv';
 
@@ -12,6 +10,10 @@ class App extends Component {
   state = {
     data: []
   }
+
+
+// run on localhost:300/:key   must have params
+
 
   updateData = (result) => {
     const data = result.data;
@@ -31,7 +33,7 @@ class App extends Component {
 
   render() {
     return (<BrowserRouter>
-      <Route path='/:key' render={(props) => <DataContainer {...props} data={this.state.data}/>}/>
+      <Route path='/:key' render={(props) => <DataContainer {...props} data={this.state.data} />}/>
     </BrowserRouter>);
   }
 }

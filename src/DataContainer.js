@@ -59,19 +59,14 @@ class DataContainer extends React.Component {
   render() {
 
     return (<table>
+      <tbody>
       <tr>
-        {
-          this.headings().map((key) =>< th className = {
-            key
-          } > {
-            key
-          }</th>)
-        }
+        { this.headings().map((key) =><th className = { key}  key = {key + "identify"} > {key}</th>) }
       </tr>
       {
-        this.transform(this.props.data).map((entry) => <tr>
-          {this.objectParser(entry).map((datumObj) => <td className={datumObj["key"]}>{datumObj["value"]}</td>)}</tr>)
-      }
+        this.transform(this.props.data).map((entry) => <tr key={Math.random()}>
+          {this.objectParser(entry).map((datumObj) => <td className={datumObj["key"]} key={datumObj["key"] + "unique"}>{datumObj["value"]}</td>)}</tr>) }
+      </tbody>
     </table>)
   }
 
