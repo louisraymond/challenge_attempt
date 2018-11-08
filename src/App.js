@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Papa from "papaparse"
 import DataContainer from "./DataContainer"
+import {BrowserRouter, Route} from "react-router-dom"
 
 import data from './data.csv';
 
@@ -18,6 +19,7 @@ class App extends Component {
   }
 
 
+
   componentDidMount(){
     Papa.parse( data , {
       header: true,
@@ -31,9 +33,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      <DataContainer data={this.state.data}/>
-      </div>
+      <BrowserRouter>
+      <Route
+          path='/:key'
+          render= {(props) => <DataContainer {...props} data={this.state.data}/>}
+           />
+      </BrowserRouter>
     );
   }
 }

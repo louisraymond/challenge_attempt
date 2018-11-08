@@ -10,7 +10,6 @@ class DataContainer extends React.Component{
 
   headings = () =>{
       if (this.props.data.length > 0){
-        console.log(this.props.data)
         return Object.keys(this.props.data[0])
       }
       else{
@@ -28,23 +27,23 @@ class DataContainer extends React.Component{
   }
 
   componentDidMount(props){
-    let key = '#'
-    let newData = this.props.data.sort((datum1,datum2)=>datum1[key]-datum2[key])
-    console.log(this.props.data)
+    console.log(this.props.match["params"]["key"])
     this.setState({
       data : this.props.data
     })
   }
 
   transform(array){
-    let key = this.state.key
+    let key='#'
+    if ( this.props.match["params"]["key"]){
+    let key = this.props.match["params"]["key"]
+  } 
     let transformed =[]
-    if ((key != 'City') && (key !='Country') === true ){
+    if ((key !== 'City') && (key !=='Country') === true ){
       transformed = array.sort((datum1,datum2)=>datum1[key]-datum2[key])
-      console.log(!!(key != 'City'))}
+    }
     else{
       transformed=array.sort((datum1,datum2)=> {
-        console.log(key)
         let a = datum1[key].toUpperCase()
         let b = datum2[key].toUpperCase()
 
