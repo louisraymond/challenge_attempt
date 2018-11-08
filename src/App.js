@@ -32,9 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <table>
       <DataContainer data={this.state.data}/>
-      </table>
       </div>
     );
   }
